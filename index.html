@@ -64,8 +64,10 @@
                 }
 
                 // Connect to the wallet and get the address
-                const { address } = await window.dapp.request("aptos", { method: "dapp:accounts" });
-                addressDisplay.textContent = `Connected Address: ${address}`;
+                const address = await window.dapp.request("aptos", { method: "dapp:accounts" });
+                const response = await window.dapp.request("aptos", { method: "dapp:accounts" });
+                console.log(response);
+                addressDisplay.textContent = `Connected Address: ${address.aptos.address}`;
 
             } catch (error) {
                 addressDisplay.textContent = 'Failed to connect to wallet.';
